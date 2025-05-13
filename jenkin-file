@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+  stages {
+    stage('Clone Repo') {
+      steps {
+        git 'https://github.com/anil-goud/terraform.git'
+      }
+    }
+    stage('Terraform Init') {
+      steps {
+        sh 'terraform init'
+      }
+    }
+    stage('Terraform Apply') {
+      steps {
+        sh 'terraform apply -auto-approve'
+      }
+    }
+  }
+}
